@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Google Takvim Uygulaması</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" style="padding:20px;">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            TAKVİMLER
+                        </h4>
+                    </div>
+                    <div class="panel-body" id="calendarList">
+                        TAKVİMLERİNİZ YÜKLENİYOR...
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            ETKİNLİKLER
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="calendar">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/fullcalendar/fullcalendar.min.js"></script>
+    <script src="~/Scripts/fullcalendar/locale/tr.js"></script>
+    <script src="~/Scripts/fullcalendar/locale-all.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+
+    <script src="~/Scripts/googlecalendar/google-calendar-api-es6.js"></script>
+    <script src="~/Scripts/googlecalendar/google-calendar.js"></script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=() => {}; handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+    <script>
+        $(document).ready(() => {
+            InitCalendar();
+
+            setTimeout(() => {
+                GetGoogleCalendarList();
+            }, 3000);
+        });
+
+    </script>
+
+</body>
+</html>
