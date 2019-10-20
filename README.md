@@ -1,7 +1,7 @@
 # google-calendar-api
 FullCalendar &amp; Google Calendar Senkronizasyonu
 
-Google Calendar API kullanarak, kullanıcıların takvim etkinliklerini özel bir web uygulamasından yönetmesini nasıl sağlarız diyorsanız bu proje çözüm olacaktır :)
+Google Calendar API kullanarak, kullanıcıların takvim etkinliklerini özel bir web uygulamasından yönetmesini nasıl sağlarız diyen geliştiriciler için bu proje çözüm olacaktır diye düşünüyorum :)
 
 Daha önce .Net tabanlı yazmış olduğum desktop uygulamalarda google takvim senkronizasyonunu yapmıştım. Ancak web tabanlı projelerde ne yazık ki 
 google'ın api dökümanları ve örnekleri yetersiz kalmış durumda. 
