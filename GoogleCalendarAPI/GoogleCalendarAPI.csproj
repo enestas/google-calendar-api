@@ -227,7 +227,6 @@
     <Content Include="Scripts\fullcalendar\locale\zh-cn.js" />
     <Content Include="Scripts\fullcalendar\locale\zh-tw.js" />
     <Content Include="Scripts\googlecalendar\google-calendar-api-es6.js" />
-    <Content Include="Scripts\googlecalendar\google-calendar-api.js" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\googlecalendar\google-calendar.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />

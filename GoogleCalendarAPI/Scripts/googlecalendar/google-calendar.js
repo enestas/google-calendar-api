@@ -207,7 +207,6 @@ EditCalendar = () => {
 
                         setTimeout(() => {
                             GetGoogleCalendarList();
-
                         }, 1000);
 
                     }).catch((error) => {
@@ -264,15 +263,9 @@ DeleteCalendar = () => {
 SetCalendarID = (ID) => {
     $('[data-calendarid]').removeClass('active');
     $('[data-calendarid="' + ID + '"]').addClass('active');
-    CurrentCalendarID = ID;
 
-    var i = 0, n = CalendarList.length;
-    for (i = 0; i < n; i++) {
-        if (CurrentCalendarID == CalendarList[i].id) {
-            CurrentCalendar = CalendarList[i];
-            break;
-        }
-    }
+    CurrentCalendarID = ID;
+    CurrentCalendar = CalendarList.filter(c => c.id === ID);
 
     var Calendar = $('#calendar');
 
@@ -365,11 +358,13 @@ NewEvent = (selectedDate) => {
                         summary: $('#txtTitle').val(),
                         description: $('#txtDescription').val(),
                         start: {
-                            dateTime: StartDate,
+                            // date: StartDate, /* sadece tarih için date kullanılabilir */
+                            dateTime: StartDate, /* tarih ve saat için dateTime kullanılabilir */
                             timeZone: 'Europe/Istanbul'
                         },
                         end: {
-                            dateTime: EndDate,
+                            // date: EndDate, /* sadece tarih için date kullanılabilir */
+                            dateTime: EndDate, /* tarih ve saat için dateTime kullanılabilir */
                             timeZone: 'Europe/Istanbul'
                         },
                         reminders: {
@@ -404,11 +399,13 @@ UpdateEventDate = (selectedItem) => {
         summary: selectedItem.title,
         description: selectedItem.description,
         start: {
-            dateTime: StartDate,
+           // date: StartDate, /* sadece tarih için date kullanılabilir */
+            dateTime: StartDate, /* tarih ve saat için dateTime kullanılabilir */
             'timeZone': 'Europe/Istanbul'
         },
         end: {
-            dateTime: EndDate,
+            // date: EndDate, /* sadece tarih için date kullanılabilir */
+            dateTime: EndDate, /* tarih ve saat için dateTime kullanılabilir */
             'timeZone': 'Europe/Istanbul'
         },
         reminders: {
@@ -490,11 +487,13 @@ ShowEvent = (event) => {
                         summary: $('#txtTitle').val(),
                         description: $('#txtDescription').val(),
                         start: {
-                            dateTime: StartDate,
+                            //date: StartDate, /* sadece tarih için date kullanılabilir */
+                            dateTime: StartDate,  /* tarih ve saat için dateTime kullanılabilir */
                             timeZone: 'Europe/Istanbul'
                         },
                         end: {
-                            dateTime: EndDate,
+                            //date: EndDate, /* sadece tarih için date kullanılabilir */
+                            dateTime: EndDate, /* tarih ve saat için dateTime kullanılabilir */
                             timeZone: 'Europe/Istanbul'
                         },
                         reminders: {
@@ -537,6 +536,7 @@ DeleteEvent = (id) => {
                 label: "Evet",
                 className: "btn-danger",
                 callback: () => {
+
                     GoogleCalendarAPI.events.delete(CurrentCalendarID, id).then((response) => {
                         $('#calendar').fullCalendar('refetchEvents');
                         $('#calendar').fullCalendar('today');
@@ -544,7 +544,8 @@ DeleteEvent = (id) => {
                         $('#calendar').fullCalendar('refetchEvents');
                         $('#calendar').fullCalendar('today');
                         bootbox.alert(error);
-                    });
+                        });
+
                 }
             },
             danger: {
