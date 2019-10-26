@@ -265,7 +265,7 @@ SetCalendarID = (ID) => {
     $('[data-calendarid="' + ID + '"]').addClass('active');
 
     CurrentCalendarID = ID;
-    CurrentCalendar = CalendarList.filter(c => c.id === ID);
+    CurrentCalendar = CalendarList.filter(c => c.id === ID)[0];
 
     var Calendar = $('#calendar');
 
@@ -283,8 +283,8 @@ GetGoogleEventList = (start, end, timeZone, callback) => {
     if (CurrentCalendarID == null)
         return callback([]);
 
-    GoogleCalendarAPI.events.list(CurrentCalendarID, start._d.toISOString(), end._d.toISOString()).
-        then((events) => {
+    GoogleCalendarAPI.events.listAsync(CurrentCalendarID, start._d.toISOString(), end._d.toISOString()).
+        then(events => {
             var eventList = GoogleCalendarAPI.converter.toFullCalendarEventList(events, CurrentCalendar.backgroundColor);
             return callback(eventList);
         });
