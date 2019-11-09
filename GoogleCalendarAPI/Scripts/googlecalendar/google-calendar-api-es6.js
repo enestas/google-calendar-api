@@ -291,9 +291,9 @@ GoogleCalendarAPI = {
        * https://developers.google.com/calendar/v3/reference/events/move
        * @param {string} calendarID mevcut google calendar (google takvim) ID
        * @param {string} eventID google etkinlik id
-       * @param {string} targetCalendarID hedef google calendar (google takvim) ID
+       * @param {string} destinationCalendarID hedef google calendar (google takvim) ID
        */
-        move: (calendarID, eventID, targetCalendarID) => {
+        move: (calendarID, eventID, destinationCalendarID) => {
             if (!GoogleCalendarAPI.isSignedIn)
                 return null;
 
@@ -301,7 +301,7 @@ GoogleCalendarAPI = {
                 gapi.client.calendar.events.move({
                     calendarId: calendarID,
                     eventId: eventID,
-                    destinationCalendarId: targetCalendarID
+                    destinationCalendarId: destinationCalendarID
                 }).execute((response) => {
                     if (response.id) {
                         resolve(response);
@@ -318,16 +318,16 @@ GoogleCalendarAPI = {
       * https://developers.google.com/calendar/v3/reference/events/move
       * @param {string} calendarID mevcut google calendar (google takvim) ID
       * @param {string} eventID google etkinlik id
-      * @param {string} targetCalendarID hedef google calendar (google takvim) ID
+      * @param {string} destinationCalendarID hedef google calendar (google takvim) ID
       */
-        moveAsync: async (calendarID, eventID, targetCalendarID) => {
+        moveAsync: async (calendarID, eventID, destinationCalendarID) => {
             if (!GoogleCalendarAPI.isSignedIn)
                 return null;
 
             var response = await gapi.client.calendar.events.move({
                 calendarId: calendarID,
                 eventId: eventID,
-                destinationCalendarId: targetCalendarID
+                destinationCalendarId: destinationCalendarID
             }).execute((response) => {
                 return response;
             });
